@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xác nhận đơn hàng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./guest.css">
+</head>
+
+<body class="bg-light">
+    <div class="order-form"></div>
+    
+    <div class="page-wrapper">
+        <div class="banner-group-order">
+            <header class="py-2">
+                <div class="container d-flex justify-content-between">
+                    <div class="logo">
+                        <img src="./44ea3c2e-b3ac-4927-a9d7-da71ec11e27e.png" alt="">
+                    </div>
+                    <ul class="nav pe-4 align-items-center">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./order.html" class="nav-link">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./pay.html" class="nav-link">
+                                <span></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                    class="bi bi-bag-plus" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5" />
+                                    <path
+                                        d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                                </svg>
+                            </a>
+                        </li>
+                        <div class="profile">
+                            <button class="dropdown-toggle" type="button" id="profile-dropdown" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                    class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                    <path fill-rule="evenodd"
+                                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                </svg>
+                            </button>
+                            <ul id="author-menu-drd" class="dropdown-menu" aria-labelledby="profile-dropdown">
+                                <li id="user-info">
+                                    <a class="dropdown-item" href="/Login.html">Đăng nhập</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/register.html">Đăng ký</a>
+                                </li>
+                            </ul>
+    
+                        </div>
+                    </ul>
+                </div>
+            </header>
+
+   
+    <div class="block" style="height: 10vh;"></div>
+    
+    <div class="container py-5 cart-list">
+        <h2 class="mb-4 text-center">Xác nhận đơn hàng</h2>
+        <div id="cart-container"></div>
+        <hr>
+        <h4>Tổng đơn hàng: <span id="total-price">0đ</span></h4>
+        <h4>Số dư ví: <span id="wallet-balance">0đ</span></h4>
+        <h4>Số dư còn lại: <span id="remaining-balance">0đ</span></h4>
+        <button id="confirm-order" class="btn btn-success mt-3">Xác nhận đặt hàng</button>
+        <button id="btn-cancel-order" class="btn btn-danger mt-3">Huỷ đơn hàng</button>
+
+    </div>
+    
+    <!-- chỉ load SDK modular -->
+    <script type="module" src="./order.js"></script>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/firebase@10.13.2/firebase-app-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/firebase@10.13.2/firebase-firestore-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/firebase@10.13.2/firebase-auth-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+    <script src="./product.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./fireBase-config.js"></script>
+    <script type="module" src="./wallet.js"></script>
+    <script type="module" src="./pay.js"></script>
+    <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+                import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+                import { getFirestore, collection, query, where, getDocs, updateDoc, doc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+                const firebaseConfig = {
+                    apiKey: "AIzaSyBfj8AZgFR_sCXU92dbA94qLosn8Au5Oc0",
+                    authDomain: "coffee-management-5c0a0.firebaseapp.com",
+                    projectId: "coffee-management-5c0a0",
+                    storageBucket: "coffee-management-5c0a0.appspot.com",
+                    messagingSenderId: "29355541928",
+                    appId: "1:29355541928:web:e29709c05e5cb220d2899d",
+                    measurementId: "G-ET3P65MTQ4"
+                };
+
+                const app = initializeApp(firebaseConfig);
+                const auth = getAuth(app);
+                const db = getFirestore(app);
+
+                // Hàm format số tiền thành VND
+                function fmtVND(amount) {
+                    if (typeof amount !== 'number') amount = 0;
+                    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+                }
+
+                function saveCart(cart) {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                }
+
+                function loadCart() {
+                    const cartJson = localStorage.getItem('cart');
+                    if (!cartJson) return [];
+                    try {
+                        return JSON.parse(cartJson);
+                    } catch {
+                        return [];
+                    }
+                }
+
+                function renderCart() {
+                        const cart = loadCart();
+                        const cartListEl = document.getElementById('cart-list');
+                        if (!cartListEl) return;
+
+                        if (cart.length === 0) {
+                            cartListEl.innerHTML = '<p>Giỏ hàng trống</p>';
+                            document.getElementById('total-price').textContent = fmtVND(0);
+                            document.getElementById('remaining-balance').textContent = fmtVND(0);
+                            document.getElementById('calculation-line').textContent = '';
+                            return;
+                        }
+
+                        let html = '';
+                        let total = 0;
+                        cart.forEach(item => {
+                            const itemTotal = item.price * item.quantity;
+                            total += itemTotal;
+                            html += `
+            <div class="cart-item">
+                <span>${item.name} x${item.quantity}</span>
+                <span>${fmtVND(itemTotal)}</span>
+            </div>
+        `;
+                        });
+                        cartListEl.innerHTML = html;
+                        document.getElementById('total-price').textContent = fmtVND(total);
+
+                        // Nếu có người dùng đang đăng nhập thì hiển thị số dư còn lại
+                        const user = auth.currentUser;
+                        if (user) {
+                            const q = query(collection(db, "users"), where("email", "==", user.email));
+                            getDocs(q).then(snap => {
+                                if (!snap.empty) {
+                                    const currentBalance = snap.docs[0].data().balance || 0;
+                                    const remaining = currentBalance - total;
+                                    document.getElementById('remaining-balance').textContent = fmtVND(remaining);
+                                    document.getElementById('remaining-balance').textContent =
+                                        `${fmtVND(currentBalance)} - ${fmtVND(total)} = ${fmtVND(remaining)}`;
+                                }
+                            });
+                        }
+                    }
+
+
+                async function loadWallet(email) {
+                    if (!email) {
+                        document.getElementById('wallet-balance').textContent = "Lỗi email";
+                        return;
+                    }
+                    try {
+                        const q = query(collection(db, "users"), where("email", "==", email));
+                        const snap = await getDocs(q);
+                        if (snap.empty) {
+                            document.getElementById('wallet-balance').textContent = "Không tìm thấy người dùng";
+                            return;
+                        }
+                        const bal = snap.docs[0].data().balance || 0;
+                        document.getElementById('wallet-balance').textContent = fmtVND(bal);
+                    } catch (error) {
+                        console.error("Lỗi lấy số dư ví:", error);
+                        document.getElementById('wallet-balance').textContent = "Lỗi server";
+                    }
+                }
+
+                function randomMinutes(min = 20, max = 60) {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+
+                // Lưu giá trị remaining balance và thời gian hết hạn
+                function saveRemainingBalance(value, expireTime) {
+                    localStorage.setItem('remainingBalance', JSON.stringify({ value, expireTime }));
+                    console.log(`Lưu remainingBalance: ${value}, hết hạn lúc ${new Date(expireTime).toLocaleTimeString()}`);
+                }
+
+                function loadRemainingBalance() {
+                    const dataStr = localStorage.getItem('remainingBalance');
+                    if (!dataStr) return null;
+
+                    const data = JSON.parse(dataStr);
+                    if (Date.now() > data.expireTime) {
+                        localStorage.removeItem('remainingBalance');
+                        return null;
+                    }
+                    return data;
+                }
+
+                // Hiển thị thời gian đếm ngược ở góc dưới phải
+                function showCountdownTimer(expireTime) {
+                    let timerEl = document.getElementById('countdown-timer');
+                    if (!timerEl) {
+                        timerEl = document.createElement('div');
+                        timerEl.id = 'countdown-timer';
+                        // Style cho khung đếm ngược góc dưới phải
+                        Object.assign(timerEl.style, {
+                            position: 'fixed',
+                            bottom: '20px',
+                            right: '20px',
+                            backgroundColor: '#333',
+                            color: '#fff',
+                            padding: '10px 15px',
+                            borderRadius: '8px',
+                            fontSize: '14px',
+                            zIndex: 9999,
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                        });
+                        document.body.appendChild(timerEl);
+                    }
+
+                    // Xoá nội dung cũ
+                    timerEl.textContent = '';
+
+                    // Tạo icon tích xanh lá, ẩn trước
+                    let checkIcon = document.getElementById('check-icon');
+                    if (!checkIcon) {
+                        checkIcon = document.createElement('span');
+                        checkIcon.id = 'check-icon';
+                        checkIcon.innerHTML = '✔️'; // Hoặc bạn có thể thay bằng icon SVG
+                        checkIcon.style.color = 'limegreen';
+                        checkIcon.style.fontSize = '18px';
+                        checkIcon.style.display = 'none'; // Ẩn mặc định
+                        timerEl.appendChild(checkIcon);
+                    }
+
+                    // Tạo phần hiển thị thời gian
+                    let timeDisplay = document.createElement('span');
+                    timerEl.appendChild(timeDisplay);
+
+                    function updateTimer() {
+                        const now = Date.now();
+                        const diffMs = expireTime - now;
+                        if (diffMs <= 0) {
+                            timeDisplay.textContent = "Đã hết thời gian";
+                            checkIcon.style.display = 'inline'; // Hiện tích xanh
+                            clearInterval(intervalId);
+                            return;
+                        }
+                        // Ẩn icon tích khi còn thời gian
+                        checkIcon.style.display = 'none';
+
+                        // Tính phút và giây
+                        const totalSeconds = Math.floor(diffMs / 1000);
+                        const minutes = Math.floor(totalSeconds / 60);
+                        const seconds = totalSeconds % 60;
+                        timeDisplay.textContent = `Thời gian đếm ngược: ${minutes} phút ${seconds} giây`;
+                    }
+
+                    updateTimer();
+                    const intervalId = setInterval(updateTimer, 1000);
+                }
+
+                function setupConfirmOrder(email) {
+                        const confirmButton = document.getElementById('confirm-order');
+                        if (!confirmButton) return;
+
+                        confirmButton.addEventListener('click', async () => {
+                            const cart = loadCart();
+                            if (cart.length === 0) {
+                                alert("Giỏ hàng trống");
+                                return;
+                            }
+
+                            // Tính tổng giá đơn hàng
+                            let totalPrice = 0;
+                            cart.forEach(item => totalPrice += item.price * item.quantity);
+
+                            // Lấy số dư ví hiện tại từ Firestore (để đảm bảo cập nhật mới nhất)
+                            try {
+                                const q = query(collection(db, "users"), where("email", "==", email));
+                                const snap = await getDocs(q);
+                                if (snap.empty) {
+                                    alert("Không tìm thấy user");
+                                    return;
+                                }
+                                const userDoc = snap.docs[0];
+                                const walletBalance = userDoc.data().balance || 0;
+
+                                if (totalPrice > walletBalance) {
+                                    alert("Không đủ số dư trong ví để thanh toán.");
+                                    return;
+                                }
+
+                                const newBalance = walletBalance - totalPrice;
+
+                                // Random thời gian hết hạn 20-60 phút
+                                const expireMinutes = randomMinutes(20, 60);
+                                const expireTime = Date.now() + expireMinutes * 60 * 1000;
+
+                                // Lưu vào localStorage
+                                saveRemainingBalance(newBalance, expireTime);
+
+                                // Cập nhật Firestore số dư mới
+                                await updateDoc(doc(db, "users", userDoc.id), { balance: newBalance });
+
+                                // Cập nhật UI
+                                document.getElementById('remaining-balance').textContent = fmtVND(newBalance);
+                                document.getElementById('wallet-balance').textContent = fmtVND(newBalance);
+                                document.getElementById('remaining-balance').textContent =
+                                    `${fmtVND(walletBalance)} - ${fmtVND(totalPrice)} = ${fmtVND(newBalance)}`;
+
+                                showCountdownTimer(expireTime);
+
+                                alert("Đặt hàng thành công");
+
+                                // Xóa giỏ hàng
+                                localStorage.removeItem('cart');
+                                renderCart();
+
+                            } catch (error) {
+                                console.error("Lỗi cập nhật số dư ví:", error);
+                                alert("Lỗi server, vui lòng thử lại");
+                            }
+                        });
+                    }
+
+                    // Khi trạng thái đăng nhập thay đổi, load ví, giỏ hàng, thiết lập nút đặt hàng, hiển thị countdown nếu còn hiệu lực
+                    onAuthStateChanged(auth, user => {
+                        if (user) {
+                            loadWallet(user.email);
+                            renderCart();
+                            setupConfirmOrder(user.email);
+                            initRemainingBalanceCountdown();
+                        } else {
+                            document.getElementById('wallet-balance').textContent = "Chưa đăng nhập";
+                            renderCart();
+
+                            // Xoá countdown timer nếu có
+                            const timerEl = document.getElementById('countdown-timer');
+                            if (timerEl) timerEl.remove();
+                        }
+                    });
+
+
+                document.getElementById('btn-cancel-order').addEventListener('click', () => {
+                    const userConfirm = confirm("Bạn có chắc muốn huỷ đơn hàng và xoá giỏ hàng không?");
+                    if (!userConfirm) return;
+
+                    localStorage.removeItem('cart');
+                    localStorage.removeItem('remainingBalance');
+
+                    renderCart();
+
+                    document.getElementById('remaining-balance').textContent = fmtVND(0);
+                    document.getElementById('wallet-balance').textContent = '';
+
+                    // Xoá countdown timer nếu có
+                    const timerEl = document.getElementById('countdown-timer');
+                    if (timerEl) timerEl.remove();
+
+                    alert("Đã huỷ đơn hàng, giỏ hàng hiện tại trống");
+                });
+                saveRemainingBalance(remainingValue, expireTime);
+
+                    // Cập nhật số dư vào Firestore
+                    try {
+                        const q = query(collection(db, "users"), where("email", "==", email));
+                        const snap = await getDocs(q);
+                        if (!snap.empty) {
+                            const userDoc = snap.docs[0];
+                            await updateDoc(doc(db, "users", userDoc.id), {
+                                balance: remainingValue
+                            });
+
+                            // Hiển thị lại số dư, tổng tiền, còn lại
+                            document.getElementById('wallet-balance').textContent = fmtVND(remainingValue);
+                            document.getElementById('remaining-balance').textContent = fmtVND(remainingValue);
+
+                            // Hiển thị thời gian đếm ngược
+                            showCountdownTimer(expireTime);
+
+                            // Hiệu ứng xác nhận
+                            document.getElementById('expiry-badge').style.display = 'block';
+
+                            // Lưu giỏ hàng trống và cập nhật giao diện
+                            saveCart([]);
+                            renderCart();
+
+                            document.getElementById('calculation-line').textContent = `Bạn đã thanh toán ${fmtVND(totalPrice)}. Số dư còn lại: ${fmtVND(remainingValue)}.`;
+                        }
+                    } catch (err) {
+                        console.error("Lỗi cập nhật số dư:", err);
+                        alert("Có lỗi xảy ra khi cập nhật số dư. Vui lòng thử lại.");
+                    }
+
+                    onAuthStateChanged(auth, (user) => {
+                        if (user) {
+                            loadWallet(user.email);
+                            setupConfirmOrder(user.email);
+
+                            // Nếu có remaining balance cũ còn hiệu lực -> load lại
+                            const data = loadRemainingBalance();
+                            if (data) {
+                                document.getElementById('remaining-balance').textContent = fmtVND(data.value);
+                                showCountdownTimer(data.expireTime);
+                            }
+                        } else {
+                            alert("Vui lòng đăng nhập để xác nhận đơn hàng.");
+                        }
+                    });
+
+                    document.getElementById("btn-cancel-order").addEventListener("click", () => {
+                        if (confirm("Bạn có chắc muốn huỷ đơn hàng không?")) {
+                            saveCart([]);
+                            localStorage.removeItem("remainingBalance");
+                            renderCart();
+                            document.getElementById("total-price").textContent = fmtVND(0);
+                            document.getElementById("remaining-balance").textContent = fmtVND(0);
+                            document.getElementById("calculation-line").textContent = "Đơn hàng đã bị huỷ.";
+                        }
+                    });
+
+                    // Gọi khi trang load
+                    renderCart();
+
+                    // Cập nhật số dư ví trên giao diện
+                        document.getElementById('remaining-balance').textContent = fmtVND(newBalance);
+                        document.getElementById('wallet-balance').textContent = fmtVND(newBalance);
+
+                        // Hiển thị dòng tính toán
+                        document.getElementById('calculation-line').textContent =
+                            `${fmtVND(walletBalance)} - ${fmtVND(totalPrice)} = ${fmtVND(newBalance)}`;
+
+                        // Hiển thị badge thời gian hết hạn
+                        document.getElementById('expiry-badge').style.display = 'block';                      
+</script>
+  
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <link rel="icon" sizes="16x16" type="image/png" href="./44ea3c2e-b3ac-4927-a9d7-da71ec11e27e.png">
+
+
+    <!-- Boostrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./src/css/all.min.css">
+
+    <!-- My CSS -->
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./auth.css">
+
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGZZE1BY7G"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ET3P65MTQ4');
+    </script>
+
+</head>
+
+<body>
+
+    <div class="auth-container">
+        <div class="box rounded-md">
+            <div class="logo text-center">
+                <img src="./44ea3c2e-b3ac-4927-a9d7-da71ec11e27e.png" alt="">
+            </div>
+            <h3 class="text-center py-3" style="color:rgb(79, 227, 136)">Đăng nhập</h3>
+            <form action="" id="login-form">
+                <div class="form-group d-flex align-items-center rounded-sm mb-4">
+                    <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
+                    </svg></span>
+                    <input type="email" class="form-control inp-email" name="email" placeholder="Email">
+                </div>
+                <div class="form-group d-flex align-items-center rounded-sm mb-4">
+                    <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1" />
+                    </svg></span>
+                    <input type="password" class="form-control inp-pwd" placeholder="Password">
+                </div>
+                <div class="">
+                    <button type="submit" class="form-control btn btn-success">Đăng nhập</button>
+                    <p class="text-center mt-4">
+                        <span style="color: white;">Chưa có tài khoản?</span>
+                        <a href="./register.html" class="ms-1">Đăng ký</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Boostrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+
+    <!-- Firebase Auth -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.13.1/firebase-auth-compat.min.js"
+        integrity="sha512-b2PGOE6ClpdFR5WZylPqJ9NEtHyGtdXKIe5wI0qRKVg3VeH9Km8CvihpnySwf6v21TV2cMTUp/BuglUiFLB38Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Functions -->
+    <script type="module" src="./firebase-config.js"></script>
+    <script type="module" src="./login.js"></script>
+    <script type="module" src="./auth.js"></script>
+    <script type="module" src="/register.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+body {
+    background-image: url('./1841-coffee.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 5%;
+
+}
+
+.auth-container .box {
+    color: var(--color-white);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.box .form-group {
+    background-color: #232a31;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.box input {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--color-white);
+    flex: 1;
+}
+
+.box input:focus {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    border-radius: 8px;
+}
+
+.box .form-group .icon {
+    color: #fff7f7;
+    padding: 1vh;
+    font-size: 1rem;
+}
+
+.box .btn-primary {
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+}

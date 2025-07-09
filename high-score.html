@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Quiz - Highscores</title>
+    <link rel="icon" href="/images/favicon.ico">
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
+    <style>
+        body {
+    background-image: url('/images/leaves.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    padding: 1rem;
+}
+
+h1 {
+    font-size: 1.8rem; /* Responsive font size */
+    font-weight: 700;
+    color: teal;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+.content {
+    background: rgba(255, 255, 255, 0.6); /* 0.6 makes the box 60% opaque and 40% transparent */
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 25rem; /* Limit the width for larger screens */
+    text-align: center;
+    backdrop-filter: blur(0.5rem);
+    overflow-y: auto; /* Scroll within the content box if needed */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+li {
+    padding: 0.75rem;
+    position: relative;
+    background: #deecec;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.1rem;
+    font-size: 1rem;
+    border-bottom: 0.0625rem solid #e6e6e6;
+    display: flex;
+    justify-content: center; /* Centers the flex items within the li */
+    align-items: center;
+    flex-direction: row;
+}
+
+li div, li span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(51, 217, 223); /* Adjust color as needed */
+    font-family: Arial, Helvetica, sans-serif;
+    flex: 1;
+    text-align: center; /* Center text within each flex item */
+}
+
+li span {
+    color: rgb(92, 32, 204); /* Different color for the score */
+    text-transform: lowercase;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .content {
+        padding: 1rem;
+        max-width: 90%; /* Slightly reduce max-width for small screens */
+    }
+
+    li {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    li div, li span {
+        font-size: 1rem;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h1>High Scores</h1>
+        <ul id="score-list"></ul>
+    </div>
+    <script src="homework.js"></script>
+</body>
+
+</html>

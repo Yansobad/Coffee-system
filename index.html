@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ</title>
+    <link rel="icon" sizes="16x16" type="image/png" href="./44ea3c2e-b3ac-4927-a9d7-da71ec11e27e.png">
+
+    <!-- Boostrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Oswald:wght@200..700&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=SUSE:wght@100..800&family=Spline+Sans:wght@300..700&display=swap"
+        rel="stylesheet">
+    
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- My CSS -->
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./guest.css">
+    <link rel="stylesheet" href="./chatbox.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GGZZE1BY7G"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ET3P65MTQ4');
+    </script>
+</head>
+<body>
+    <!-- Chatbox -->
+    <!-- Nút mở chatbot -->
+    <div class="chat-toggle" onclick="toggleChat()"></div>
+    
+    <!-- Khung chat -->
+    <div class="chat-container" id="chat-container">
+        <div class="chat-box" id="chat-box"></div>
+        <div class="input-box">
+            <input type="text" id="user-input" placeholder="Nhập tin nhắn..."
+                onkeydown="if(event.key === 'Enter') sendMessage()">
+            <button onclick="sendMessage()">Gửi</button>
+            <!-- Nút xóa chat -->
+            <button id="clear-chat" onclick="clearChat()"><span style="font-weight: bolder; color: red;">X</span></button>
+    
+        </div>
+    </div>
+    
+
+
+    <div class="order-form"></div>
+    
+    <div class="page-wrapper">
+        <div class="banner-group">
+            <header class="py-2">
+                <div class="container d-flex justify-content-between">
+                    <div class="logo">
+                        <img src="./44ea3c2e-b3ac-4927-a9d7-da71ec11e27e.png" alt="">
+                    </div>
+                    <ul class="nav pe-4 align-items-center">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./order.html" class="nav-link">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./pay.html" class="nav-link">
+                                <span></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bag-plus"
+                                    viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5" />
+                                    <path
+                                        d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                                </svg>
+                            </a>
+                        </li>
+                        <div class="profile">
+                            <button class="dropdown-toggle" type="button" id="profile-dropdown" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle"
+                                    viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                    <path fill-rule="evenodd"
+                                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                </svg>
+                            </button>
+                            <ul id="author-menu-drd" class="dropdown-menu" aria-labelledby="profile-dropdown">
+                                <li><a class="dropdown-item" href="/Login.html">Đăng nhập</a></li>
+                                <li><a class="dropdown-item" href="/register.html">Đăng ký</a></li>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+            </header>
+    
+
+    
+        </div>
+    
+        <section class="container mt-4">
+            <div class="row align-items-center"> 
+                <div class="banner-text">
+                    <h3 class="title text">Bắt đầu ngày mới với một tách cà phê đen ...</h3>
+                </div>
+                <div class="col-lg-6 col-12 text-center">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/01dn67QubYQ?si=Elmgmn0z3ok9eKh4"
+                        title="Chill Coffee Lofi" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="col-lg-6 col-12 text-center">
+                    <h2>Uống gì bây giờ nhỉ?</h2>
+                    <p>Chào mừng các bạn đến với <i class="text-primary" id="coffee-name"><b>Chill Coffee</b></i> của chúng tôi, nơi bạn có thể tận
+                        hưởng không chỉ là dịch vụ chăm sóc khách hàng nhiệt tình mà còn có thể thưởng thức những tách cà phê thơm 
+                        ngon và thư giãn trong không gian ấm cúng và hiện đại. Hãy đến với
+                        chúng tôi để trải nghiệm những giây phút thư giãn tuyệt vời cùng bạn bè và người thân của bạn nhé !</p>
+                </div>
+            </div>
+        </section>
+        <section class="container">
+            <h3 class="my-4">Gợi ý cho bạn nhé !!!</h3>
+        <div class="product-list row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-4">
+            <div class="col">
+                <div class="card h-100 hover-scale">
+                    <img src="./tra-chanh-gung-sa.png" class="tea-img" alt="Trà chanh gừng sả">
+                    <div class="card-body">
+                        <h5 class="card-title">Trà chanh gừng sả</h5>
+                        <p class="card-text">Thơm ngon, thanh mát.</p>
+                        <h5>Giá: 25.000đ</h5>
+                        <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
+                            <button class="btn btn-sm btn-outline-secondary btn-decrease">-</button>
+                            <a href="./pay.html" id="go-to-pay"><button class="btn btn-outline-primary fw-bold price-btn go-to-pay"
+                                    data-price="25" data-qty="00000">Tổng: 0đ
+                                    (x0)</button></a>
+                            <button class="btn btn-sm btn-outline-secondary btn-increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="card h-100 hover-scale">
+                    <img src="./tradao.avif" class="tea-img" alt="Trà đào">
+                    <div class="card-body">
+                        <h5 class="card-title">Trà đào</h5>
+                        <p class="card-text">Hương vị ngọt ngào, sảng khoái.</p>
+                        <h5>Giá: 30.000đ</h5>
+                        <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
+                            <button class="btn btn-sm btn-outline-secondary btn-decrease">-</button>
+                            <a href="./pay.html" id="go-to-pay"><button class="btn btn-outline-primary fw-bold price-btn go-to-pay"
+                                    data-price="30" data-qty="00000">Tổng: 0đ
+                                    (x0)</button></a>
+                            <button class="btn btn-sm btn-outline-secondary btn-increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="card h-100 hover-scale">
+                    <img src="./ca-phe-trung.webp" class="tea-img" alt="Cà phê trứng">
+                    <div class="card-body">
+                        <h5 class="card-title">Cà phê trứng</h5>
+                        <p class="card-text">Hương vị ngọt ngào, sảng khoái.</p>
+                        <h5>Giá: 30.000đ</h5>
+                        <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
+                            <button class="btn btn-sm btn-outline-secondary btn-decrease">-</button>
+                            <a href="./pay.html" id="go-to-pay"><button class="btn btn-outline-primary fw-bold price-btn go-to-pay"
+                                    data-price="30" data-qty="00000">Tổng: 0đ
+                                    (x0)</button></a>
+                            <button class="btn btn-sm btn-outline-secondary btn-increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="card h-100 hover-scale">
+                    <img src="./tra-sua-kem-trung-nuong-5-min-1.jpg" class="tea-img" alt="Trà sữa kem trứng">
+                    <div class="card-body">
+                        <h5 class="card-title">Trà sữa kem trứng</h5>
+                        <p class="card-text">Hương vị ngọt ngào, sảng khoái.</p>
+                        <h5>Giá: 35.000đ</h5>
+                        <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
+                            <button class="btn btn-sm btn-outline-secondary btn-decrease">-</button>
+                            <a href="./pay.html" id="go-to-pay"><button class="btn btn-outline-primary fw-bold price-btn go-to-pay"
+                                    data-price="35" data-qty="00000">Tổng: 0đ
+                                    (x0)</button></a>
+                            <button class="btn btn-sm btn-outline-secondary btn-increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="card h-100 hover-scale">
+                    <img src="./trasuadau.webp" class="tea-img" alt="Trà sữa dâu">
+                    <div class="card-body">
+                        <h5 class="card-title">Trà sữa dâu</h5>
+                        <p class="card-text">Hương vị ngọt ngào, sảng khoái.</p>
+                        <h5>Giá: 25.000đ</h5>
+                        <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
+                            <button class="btn btn-sm btn-outline-secondary btn-decrease">-</button>
+                            <a href="./pay.html" id="go-to-pay"><button class="btn btn-outline-primary fw-bold price-btn go-to-pay"
+                                    data-price="25" data-qty="00000">Tổng: 0đ
+                                    (x0)</button></a>
+                            <button class="btn btn-sm btn-outline-secondary btn-increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="card h-100 hover-scale">
+                    <img src="./cafesua.jpg" class="tea-img" alt="Cà phê sữa">
+                    <div class="card-body">
+                        <h5 class="card-title">Cà phê sữa</h5>
+                        <p class="card-text">Hương vị ngọt ngào, sảng khoái.</p>
+                        <h5>Giá: 20.000đ</h5>
+                        <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
+                            <button class="btn btn-sm btn-outline-secondary btn-decrease">-</button>
+                            <a href="./pay.html" id="go-to-pay"><button class="btn btn-outline-primary fw-bold price-btn go-to-pay"
+                                    data-price="20" data-qty="00000">Tổng: 0đ
+                                    (x0)</button></a>
+                            <button class="btn btn-sm btn-outline-secondary btn-increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="card h-100 hover-scale">
+                    <img src="./tratac.jpg" class="tea-img" alt="Trà tắc">
+                    <div class="card-body">
+                        <h5 class="card-title">Trà tắc</h5>
+                        <p class="card-text">Chua chua ngọt ngọt, giải khát cực đã.</p>
+                        <h5>Giá: 15.000đ</h5>
+                        <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
+                            <button class="btn btn-sm btn-outline-secondary btn-decrease">-</button>
+                            <a href="./pay.html" id="go-to-pay"><button class="btn btn-outline-primary fw-bold price-btn go-to-pay"
+                                    data-price="15" data-qty="00000">Tổng: 0đ
+                                    (x0)</button></a>
+                            <button class="btn btn-sm btn-outline-secondary btn-increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="card h-100 hover-scale">
+                        <img src="./tra-sua-matcha-tran-chau-den.jpg" class="tea-img" alt="Trà sữa matcha trân châu đen">
+                    <div class="card-body">
+                        <h5 class="card-title">Trà sữa matcha</h5>
+                        <p class="card-text">Vị matcha thơm mát, thêm trân châu dai ngon.</p>
+                        <h5>Giá: 30.000đ</h5>
+                        <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
+                            <button class="btn btn-sm btn-outline-secondary btn-decrease">-</button>
+                            <a href="./pay.html" id="go-to-pay"><button class="btn btn-outline-primary fw-bold price-btn go-to-pay"
+                                    data-price="30" data-qty="00000">Tổng: 0đ
+                                    (x0)</button></a>
+                            <button class="btn btn-sm btn-outline-secondary btn-increase">+</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+
+
+        
+        </div>
+
+            
+        </section>
+        <button class="btn btn-outline-danger fw-bold price-btn view-more">
+            <a href="./order.html" style="text-decoration: none;color: red;"><h5>Xem thêm</h5></a>
+        </button>
+    
+        <footer>
+            <div class="container">
+                <div class="row h-100 content">
+                    <div class="col-md-4 item">
+                        <h5>About Us</h5>
+                        <ul>
+                            <li>
+                                <span><b>Địa chỉ: </b></span>
+                                <span>Tầng 5, 71 Nguyễn Chí Thanh, Phường Láng Hạ, Quận Đống Đa, Hà Nội</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 item">
+                        <h5>Newsletter</h5>
+                        <div class="d-flex footer-form">
+                            <input type="text" placeholder="Enter email">
+                            <button class="btn btn-primary py-2 px-4">Gửi</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4 item">
+                        <h5>Follow Us</h5>
+                        <div>
+                            <h6><i>Hotline</i></h6>
+                            <ul>
+                                <li><span>Hà Nội: </span>02477717888</li>
+                                <li><span>Tp.HCM: </span>02877717789</li>
+                            </ul>
+                        </div>
+                        <div class="social-media">
+                            <a href="https://www.facebook.com/mindxschool" class="me-2 text-white">
+                                <i class="fa-brands fa-facebook-f p-2 bg-primary rounded-sm"></i>
+                            </a>
+                            <a href="https://www.facebook.com/mindxschool" class="me-2 text-white">
+                                <i class="fa-brands fa-instagram p-2 me-2 bg-primary rounded-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+
+
+
+
+
+    <!-- Boostrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+    
+    <!-- Firebase Auth -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.13.1/firebase-auth-compat.min.js"
+        integrity="sha512-b2PGOE6ClpdFR5WZylPqJ9NEtHyGtdXKIe5wI0qRKVg3VeH9Km8CvihpnySwf6v21TV2cMTUp/BuglUiFLB38Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- ✅ Đặt script ở cuối trang để DOM sẵn sàng -->
+    <script  src="./auth.js"></script>
+    <script src="./product.js"></script>
+    <script src="./chatbox.js"></script>
+    
+
+
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+.banner-group {
+    background-image: url('/header.jpg');
+    min-height: 100vh; /* Đảm bảo chiều cao bằng chiều cao màn hình */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.page{
+    min-height: 100vh; /* Đảm bảo chiều cao bằng chiều cao màn hình */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+header {
+    background-color: rgba(0, 0, 0, .75);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+}
+
+header .nav-link {
+    color: white;
+    text-decoration:dotted;
+    font-size: larger;
+}
+header .nav-link:hover {
+    color: white;
+    text-decoration:underline;
+    font-size: larger;
+}
+header .icon {
+    font-size: 1rem; /* Sử dụng rem để linh hoạt hơn */
+}
+
+header .profile button {
+    background: none;
+    border: none;
+    color: var(--color-white);
+}
+
+header .logo img {
+    max-width: 5vw; /* Dùng vw để logo có kích thước thay đổi theo chiều rộng màn hình */
+}
+
+.banner-text {
+    padding: 1vw; /* Dùng vw cho padding để kích thước padding thay đổi theo chiều rộng màn hình */
+    margin-bottom: 5vh;
+}
+
+.banner-text .title { 
+    border: solid 0.2rem #000000;
+    border-radius: 100px;
+    padding: 5%;
+    font-family: "Red Hat Display", sans-serif;
+    text-align: center;
+    font-size: 3rem;
+    color: transparent; /* Chữ không có màu */
+    -webkit-text-stroke: 2px rgba(0, 0, 0, 0.77); /* Viền chữ màu xám */
+}
+
+footer {
+    background-image: url('./coffee-5417663_1280.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 4vw; /* Thay thế px bằng vw */
+}
+
+footer .content {
+    padding: 14vw 0; /* Dùng vw cho padding để làm cho phần tử linh hoạt hơn */
+    color: var(--color-white);
+}
+
+footer .footer-form {
+    border-radius: 0.4rem; /* Dùng rem cho border-radius */
+    background-color: var(--color-white);
+}
+
+footer .footer-form input {
+    background: none;
+    border: none;
+    flex: 80%;
+}
+.dropdown-menu {
+    padding: 1vh;
+    border-radius: 0.8rem; /* Dùng rem cho border-radius */
+    width: 5vh;
+    text-align: center;
+}
+
+.page-content {
+    margin-top: 10vh; /* Dùng vh để điều chỉnh margin-top theo chiều cao màn hình */
+}
+
+.product-list .product-item .content {
+    border-radius: 0.8rem; /* Sử dụng rem cho border-radius */
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.product-list .product-item img {
+    width: 100%;
+    height: 24rem; /* Dùng rem thay vì px để linh hoạt hơn */
+    object-fit: cover;
+    border-radius: 0.8rem 0.8rem 0 0;
+}
+
+/* Order form */
+.order-form {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 6;
+}
+
+.order-form .content {
+    position: absolute;
+    min-width: 60vw; /* Thay thế px bằng vw */
+    background-color: var(--color-white);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+}
+
+.order-form .content img {
+    width: 100%;
+    height: 20rem; /* Sử dụng rem cho height thay vì px */
+    object-fit: cover;
+}
+
+/* Order list */
+.order-list .order-item img {
+    width: 10rem; /* Sử dụng rem thay vì px */
+    height: 10rem; /* Dùng rem cho chiều cao */
+    object-fit: cover;
+}
+.tea-menu,
+.tea {
+  max-height: 45vh;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  border-radius: 8px; /* tuỳ chọn nếu muốn ảnh bo góc đẹp hơn */
+}
+.card:hover {
+  transform: scale(1.05);
+  z-index: 2;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transition-duration: 1s;
+}
+.card{
+    border: solid 0.2rem #515050;
+}
+#coffee-name{
+    font-family: "Red Hat Display", sans-serif;
+}
+h5{
+    text-align: center;
+}
+.nav .nav-item a svg,
+.profile button svg {
+    display: block;
+    margin: 0 auto;
+}
+
+.nav .nav-item,
+.profile {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.profile button {
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+.view-more{
+    text-align: center;
+    cursor: pointer;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+.view-more h5{
+    font-family: "Red Hat Display", sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0.5vh;
+}
+.view-more a h5:hover{
+    color: white;
+}
+#client-info {
+    margin-left: 35%;
+    max-width: 60%;
+}

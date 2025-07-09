@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xử lí tác vụ</title>
+    <link rel="icon" sizes="16x16" type="image/png" href="./44ea3c2e-b3ac-4927-a9d7-da71ec11e27e.png">
+    
+    <!-- Boostrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Oswald:wght@200..700&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=SUSE:wght@100..800&family=Spline+Sans:wght@300..700&display=swap"
+        rel="stylesheet">
+    
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- My CSS -->
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./guest.css">
+    
+</head>
+<body>
+
+    <body class="bg-light">
+        <div class="order-form"></div>
+    
+        <div class="page-wrapper">
+            <div class="banner-group-order">
+                <header class="py-2">
+                    <div class="container d-flex justify-content-between">
+                        <div class="logo">
+                            <img src="./44ea3c2e-b3ac-4927-a9d7-da71ec11e27e.png" alt="">
+                        </div>
+                        <ul class="nav pe-4 align-items-center">
+                            <li class="nav-item">
+                                <a href="/" class="nav-link">Trang chủ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./order.html" class="nav-link">Menu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./pay.html" class="nav-link">
+                                    <span></span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                        class="bi bi-bag-plus" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5" />
+                                        <path
+                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <div class="profile">
+                                <button class="dropdown-toggle" type="button" id="profile-dropdown"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                        class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                        <path fill-rule="evenodd"
+                                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                    </svg>
+                                </button>
+                                <ul id="author-menu-drd" class="dropdown-menu" aria-labelledby="profile-dropdown">
+                                    <li id="user-info">
+                                        <a class="dropdown-item" href="/Login.html">Đăng nhập</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/register.html">Đăng ký</a>
+                                    </li>
+                                </ul>
+    
+                            </div>
+                        </ul>
+                    </div>
+                </header>
+    
+    
+                <div class="block" style="height: 15vh;"></div>
+
+                <div class="client">
+                    <h3 style="margin-left: 55%;">Thông tin khách hàng</h3>
+                    <div style="height: 0.07em; background-color: #333; width: 60%; margin-left: 35%; margin-bottom: 2vh;"></div>
+                
+                    <div class="client-info" id="client-info">
+                        <!-- Thông tin tên sẽ hiển thị ở đây -->
+                    </div>
+                
+                    <div style="height: 0.09em; background-color: #333; width: 60%; margin-left: 35%; margin-top: 2vh;margin-bottom: 2vh;"></div>
+                </div>
+                
+
+        
+
+
+
+
+
+
+
+
+
+
+    <script type="module" src="./fireBase-config.js"></script>
+    <script type="module">
+          import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+            import { getAuth } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+            import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyBfj8AZgFR_sCXU92dbA94qLosn8Au5Oc0",
+                authDomain: "coffee-management-5c0a0.firebaseapp.com",
+                projectId: "coffee-management-5c0a0",
+                storageBucket: "coffee-management-5c0a0.appspot.com",
+                messagingSenderId: "29355541928",
+                appId: "1:29355541928:web:e29709c05e5cb220d2899d",
+                measurementId: "G-ET3P65MTQ4"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+            const db = getFirestore(app);
+
+            const clientInfoDiv = document.getElementById('client-info');
+
+            async function fetchAllUsers() {
+                const querySnapshot = await getDocs(collection(db, "users"));
+                if (querySnapshot.empty) {
+                    clientInfoDiv.innerHTML = `<p>Không có người dùng nào.</p>`;
+                    return;
+                }
+
+                let html = "<div style='padding-left: 1rem'>";
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    html += `
+        <div class="user">
+          <hr>  
+          <p><strong>Họ tên:</strong> ${data.Username || 'Không có tên'}<span style="margin-left: 2%"></span> <strong>Email:</strong> ${data.email || 'Không có email'} <span style="margin-left: 2%"></span> <strong>SĐT:</strong> ${data.phone || 'Không có sđt'} </p>
+          <p><strong>Địa chỉ:</strong> ${data.address || 'Không có địa chỉ'}</p>
+          <hr>
+        </div>
+      `;
+                });
+                html += "</div>";
+                clientInfoDiv.innerHTML = html;
+            }
+
+            fetchAllUsers();
+    </script>
+      
+</body>
+</html>

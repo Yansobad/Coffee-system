@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Game</title>
+    <style>
+                :root {
+            font-size: 55%; /* 1rem = 5.5px, adjusted for smaller fonts */
+            height: 100%;
+            --primary-color: #4db6ac; /* Teal green */
+            --secondary-color: #00796b; /* Darker teal */
+            --accent-color: rgba(255, 255, 255, 0.9); /* Light white background */
+            --text-color-dark: #333; /* Dark gray for text */
+            --text-color-light: #fff; /* White text */
+            --box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.20); /* Softer shadow */
+            --transition-speed: 150ms; /* Smooth transitions */
+            }
+
+            body {
+            height: 100%;
+            background-image: url('/images/leaves.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color-dark);
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+
+            .container {
+            width: 90%;
+            max-width: 40rem;
+            padding: 1.5rem 1rem;
+            border-radius: 1rem; /* Rounded corners */
+            background: var(--accent-color); /* Light background */
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            }
+
+            h2 {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            text-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            }
+
+            .flex-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items */
+            }
+
+            .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+
+            .text-center {
+            text-align: center;
+            }
+
+            .choice-container {
+            display: flex;
+            margin-bottom: 0.8rem;
+            width: 100%;
+            max-width: 38rem;
+            border-radius: 0.8rem;
+            border: 0.2rem solid var(--primary-color);
+            background-color: var(--accent-color);
+            font-size: 1.5rem;
+            transition: var(--transition-speed) ease-in-out;
+            box-shadow: var(--box-shadow);
+            }
+
+            .choice-container:hover {
+            cursor: pointer;
+            box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.2);
+            transform: translateY(-0.3rem);
+            transition: var(--transition-speed) ease-in-out;
+            }
+
+            .choice-prefix {
+            padding: 0.8rem 1rem; /* Increased left padding */
+            background-color: var(--primary-color); /* Matching the choice container */
+            color: var(--text-color-light);
+            font-weight: bold;
+            border-radius: 0.8rem 0.8rem 0.8rem 0.8rem; 
+            flex: 0 0 2rem;
+            text-align: center;
+            margin-left: 0.8rem;
+            }
+
+            .choice-text {
+            padding: 0.5rem; /* Increased padding */
+            flex: 1; /* Takes remaining space */
+            color: var(--text-color-dark);
+            }
+
+            #question {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color); /* Darker teal */
+            }
+
+            .correct {
+            background-color: #66bb6a; /* Light green */
+            color: var(--text-color-light);
+            }
+
+            .incorrect {
+            background-color: #ef5350; /* Light red */
+            color: var(--text-color-light);
+            }
+
+            .topContent {
+            display: flex;
+            justify-content: space-between; 
+            font-size: 1.8rem;
+            width: 100%;
+            }
+
+            .topContent-prefix.left,
+            .topContent-prefix.right {
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: var(--secondary-color); /* Darker teal for consistency */
+            }
+
+            #score {
+            font-weight: bold;
+            font-size: 1.6rem;
+            color: var(--text-color-dark); /* Darker teal for consistency */
+            }
+
+            #questionCounter {
+            font-weight: bold;
+            font-size: 1.6rem;
+            color: var(--text-color-dark); /* Darker teal for consistency */
+            }
+
+            .spinner {
+            margin: 1.5rem auto;
+            width: 5rem; /* Adjusted size for better proportion */
+            height: 5rem; /* Keep square shape */
+            text-align: center;
+            }
+
+            .spinner > div {
+            background-color: var(--primary-color);
+            height: 100%;
+            width: 1rem; /* Adjusted size for better proportion */
+            display: inline-block;
+            animation: sk-stretchdelay 1.2s infinite ease-in-out;
+            }
+
+            .spinner .rect2 {
+            animation-delay: -1.1s;
+            }
+
+            .spinner .rect3 {
+            animation-delay: -1.0s;
+            }
+
+            @keyframes sk-stretchdelay {
+            0%, 40%, 100% { transform: scaleY(0.4); }  
+            20% { transform: scaleY(1.0); }
+            }
+
+            /* Responsive Design */
+            @media (max-width: 768px) {
+            h2 {
+                font-size: 1.8rem; /* Adjusted for smaller screens */
+            }
+
+            .choice-container {
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .choice-prefix {
+                font-size: 1.2rem;
+                padding: 0.5rem;
+            }
+
+            .choice-text {
+                font-size: 1.2rem;
+                padding: 0.8rem;
+            }
+
+            .topContent {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .topContent-prefix.left,
+            .topContent-prefix.right {
+                font-size: 1.2rem;
+            }
+            }
+
+            @media (max-width: 480px) {
+            h2 {
+                font-size: 1.6rem; /* Adjusted for very small screens */
+            }
+
+            .choice-container {
+                font-size: 1rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .choice-prefix {
+                font-size: 1rem;
+                padding: 0.4rem;
+            }
+
+            .choice-text {
+                font-size: 1rem;
+                padding: 0.4rem;
+            }
+
+            .topContent {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .topContent-prefix.left,
+            .topContent-prefix.right {
+                font-size: 1rem;
+            }
+            }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+        </div>
+        <div id="game" class="justify-center flex-column" style="display: none;">
+            <div class="topContent">
+                <div class="topContent-item">
+                    <div class="topContent-prefix left">Question</div>
+                    <div class="topContent-text" id="questionCounter"></div>
+                </div>
+                <div class="topContent-item">
+                    <div class="topContent-prefix right">Score</div>
+                    <div class="topContent-text" id="score"></div>
+                </div>
+            </div>
+            <h2 id="question"></h2>
+            <div class="choice-container">
+                <p class="choice-prefix">A</p>
+                <p class="choice-text" data-number="1"></p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-prefix">B</p>
+                <p class="choice-text" data-number="2"></p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-prefix">C</p>
+                <p class="choice-text" data-number="3"></p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-prefix">D</p>
+                <p class="choice-text" data-number="4"></p>
+            </div>
+        </div>
+    </div>
+    <!-- Script chính -->
+    <script src="./homework.js" type="module"></script>
+</body>
+
+</html>
